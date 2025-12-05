@@ -4,26 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using FoodMgtApp.Models.Entities;
 
-namespace FoodDeliveryApp.Models.Entities
+namespace FoodMgtApp.Dtos
 {
-    public class User
+    public class RoleDto
     {
         public int Id {get; set;}
+        public string Name {get; set;} = default!;
+        public string CreatedBy {get; set;} = default!;
         public string Email {get; set;} = default!;
         public string Password {get; set;} = default!;
-        public string CreatedBy {get; set;} = default!;
         public bool IsDeleted {get; set;}
         public DateTime DateCreated {get; set;}
         public List<UserRole> UserRoles {get; set;} = new List<UserRole>();
-    
 
-        public User(string email, string password, string roleId, string createdBy)
-        {
-            Email = email;
-            Password = password; 
-            CreatedBy = createdBy; 
-            DateCreated = DateTime.UtcNow;
-            IsDeleted = false;  
-        }
+        public record RoleRequest(string name);
+        public record RoleResponse(int id, string name);
+
     }
 }
