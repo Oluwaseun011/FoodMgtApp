@@ -24,5 +24,5 @@ namespace FoodMgtApp.Dtos
         
     }
     public record OrderRequest(Dictionary<int, Dictionary<int, int>> Products );
-    public record OrderResponse(int Id, Dictionary<int, Dictionary<int, int>> Products, string RefNumber, Status Status);
+    public record OrderResponse(string RefNumber, int Id);
 }
