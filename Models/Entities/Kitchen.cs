@@ -11,6 +11,7 @@ namespace FoodDeliveryApp.Models.Entities
         public string Name { get; set; } = default!;
         public string Description { get; set; } = default!;
         public Manager Manager { get; set; } = default!;
+        public List<Branch> Branch { get; set; } = default!;
         public string CreatedBy { get; set; } = default!;
         public DateTime DateCreated { get; set; } 
         public bool IsDeleted { get; set; }
