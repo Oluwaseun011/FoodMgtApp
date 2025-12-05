@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FoodDeliveryApp.Models.Entities;
+using FoodMgtApp.Models.Entities;
 
 namespace FoodMgtApp.Dtos
 {
@@ -16,11 +17,17 @@ namespace FoodMgtApp.Dtos
         public bool IsDeleted { get; set; }
         public Manager Manager { get; set; } = default!;
         public List<Branch> Branches { get; set; } = new List<Branch>();
+        public string Email { get; set; } = default!;
+        public int KitchenId { get; set; }
+        public Kitchen Kitchen { get; set; }= default!;
+        public string Password {get; set;} = default!;
+        public List<UserRole> UserRoles {get; set;} = new List<UserRole>();
+    
 
     }
 
-        public record KitchenRequest(string Name, string Description, Manager Manager, List<Branch> Branches);
-        public record KitchenResponse(int Id, string CreatedBy, DateTime DateCreated);
+        public record KitchenRequest(string Name, string Email, string Password, string Description);
+        public record KitchenResponse(int Id, string Name, string Email, string Description);
         
     
 }

@@ -14,22 +14,7 @@ namespace FoodDeliveryApp.Dtos
         public List<UserRole> UserRoles {get; set;} = new List<UserRole>();
     }
 
-    public class LoginRequest
-    {
-        public string Email { get; set; } = default!;
-        public string Password { get; set; } = default!;
-        public LoginRequest(string email,string password)
-        {
-            Email = email;
-            Password = password;
-        }
-    }
-
-     public class LoginResponse
-    {
-    
-        public int Id{ get; set; }
-        public string Email{ get; set; } = default!;
-        public List<UserRole> UserRoles = new List<UserRole>();
-    }
+        public record LoginRequest(string Email,string Password);
+        public record LoginResponse(int Id, string Email);
+   
 }
