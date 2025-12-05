@@ -8,8 +8,8 @@ namespace FoodDeliveryApp.Models.Entities
     public class Manager
     {
         public int Id { get; set; }
-        public string Email { get; set; } = default!;
         public string Name { get; set; } = default!;
+        public string Email { get; set; } = default!;
         public int KitchenId { get; set; }
         public Kitchen Kitchen { get; set; }= default!;
         public string CreatedBy { get; set; } = default!;
@@ -23,7 +23,6 @@ namespace FoodDeliveryApp.Models.Entities
             KitchenId = kitchenId;
             CreatedBy = createdBy;
             DateCreated = DateTime.UtcNow;
-            IsDeleted = false;
         }
     }
 }

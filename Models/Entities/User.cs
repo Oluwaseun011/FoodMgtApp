@@ -14,16 +14,15 @@ namespace FoodDeliveryApp.Models.Entities
         public string CreatedBy {get; set;} = default!;
         public bool IsDeleted {get; set;}
         public DateTime DateCreated {get; set;}
-        public List<UserRole> UserRoles {get; set;} = new List<UserRole>();
+        public ICollection<UserRole> UserRoles {get; set;} = new HashSet<UserRole>();
     
 
-        public User(string email, string password, string roleId, string createdBy)
+        public User(string email, string password, string createdBy)
         {
             Email = email;
             Password = password; 
             CreatedBy = createdBy; 
             DateCreated = DateTime.UtcNow;
-            IsDeleted = false;  
         }
     }
 }

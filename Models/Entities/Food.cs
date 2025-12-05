@@ -12,6 +12,7 @@ namespace FoodDeliveryApp.Models.Entities
         public string Description{get;set;} = null!;
         public decimal Price{get; set;} 
         public int CategoryId{get;set;}
+        public Category Category{get; set;} = default!;
         public int Quantity{get;set;}
 
         public Food(string name, string description,decimal price,int categoryId,int quantity)
