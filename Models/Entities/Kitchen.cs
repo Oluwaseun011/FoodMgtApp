@@ -14,7 +14,7 @@ namespace FoodDeliveryApp.Models.Entities
         public DateTime DateCreated { get; set; } 
         public bool IsDeleted { get; set; }
         public Manager Manager { get; set; } = default!;
-        public List<Branch> Branches { get; set; } = new List<Branch>();
+        public ICollection<Branch> Branches { get; set; } = new HashSet<Branch>();
 
         public Kitchen(string name, string description,  string createdBy)
         {
@@ -22,7 +22,6 @@ namespace FoodDeliveryApp.Models.Entities
             Description = description;
             CreatedBy = createdBy;
             DateCreated = DateTime.UtcNow;
-            IsDeleted = false;
         }
     }
 }
