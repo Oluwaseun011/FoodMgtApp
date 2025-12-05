@@ -21,6 +21,6 @@ namespace FoodMgtApp.Dtos
         public string StaffNo {get;set;}= default!;
 
     }
-    public record RegisterBranchRequest(string KitchenId,string Name,State State,int SupervisorId,User User,string Password,string Email);
-    public record RegisterBranchResponse(int Id, string Name,State State,string StaffNo,string Email);
+    public record RegisterBranchRequest(int KitchenId,string Name,State State,string Password,string Email);
+    public record RegisterBranchResponse(int Id, string Name,string StaffNo,string Email);
 }

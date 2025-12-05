@@ -12,7 +12,7 @@ namespace FoodMgtApp.Dtos
 
       
     }
-    public record RegisterFoodRequest(string Name, string Description,decimal Price,int Quantity);
+    public record RegisterFoodRequest(int CategoryId,string Name, string Description,decimal Price,int Quantity);
       
-    public record RegisterFoodResponse(int CategoryId,string Name,string description,decimal Price,int Quantity);
+    public record RegisterFoodResponse(int Id,string Name);
 }
