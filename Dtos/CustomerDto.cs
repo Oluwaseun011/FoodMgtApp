@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FoodDeliveryApp.Models.Entities;
+using FoodMgtApp.Models.Entities;
 using FoodMgtApp.Models.Enums;
 
 namespace FoodMgtApp.Dtos
@@ -17,9 +18,11 @@ namespace FoodMgtApp.Dtos
         public string Email {get; set;} = default!;
         public State Address {get; set;} = default!;
         public Wallet Wallet {get; set;} = default!;
+        public string Password {get; set;} = default!;
+        public List<UserRole> UserRoles {get; set;} = new List<UserRole>();
         
     }
 
-    public record CustomerRequest(string Name, string Email, double Amount, State Address);
-    public record CustomerResponse(int Id, string Name, string Email, double Amount, State Address, Wallet Wallet);
+    public record CustomerRequest(string Name, string Email, double Amount, State Address, string Password);
+    public record CustomerResponse(int Id, string Email, Wallet Wallet);
 }
