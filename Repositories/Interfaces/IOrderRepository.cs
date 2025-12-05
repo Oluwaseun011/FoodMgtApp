@@ -8,7 +8,7 @@ namespace FoodMgtApp.Repositories.Interfaces
 {
     public interface IOrderRepository
     {
-        void AddOrder(int customerId, int deliveryId, decimal totalAmount);
+        void AddOrder(Order order);
         Order? GetOrderById(int id);
         List<Order> GetOrdersByCustomerId(int customerId);
         List<Order> GetAllOrders();

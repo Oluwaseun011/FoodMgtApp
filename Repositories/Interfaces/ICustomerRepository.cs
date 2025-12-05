@@ -8,10 +8,10 @@ namespace FoodMgtApp.Repositories.Interfaces
 {
     public interface ICustomerRepository
     {
-        void AddCustomer(string name, string email, string address);
+        void AddCustomer(Customer customer);
         Customer? GetCustomerById(int id);
         Customer? GetCustomerByEmail(string email);
-        int nextCustomerId();
+        int NextCustomerId();
         List<Customer> GetAllCustomers();
     }
 }

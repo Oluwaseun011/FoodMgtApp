@@ -8,8 +8,7 @@ namespace FoodMgtApp.Repositories.Interfaces
 {
     public interface IWalletRepository
     {
-        void AddWallet(int customerId, decimal initialBalance);
+        void AddWallet(Wallet wallet);
         Wallet? GetWalletByCustomerId(int customerId);
-        void CreateWallet(int customerId, decimal initialBalance);
     }
 }

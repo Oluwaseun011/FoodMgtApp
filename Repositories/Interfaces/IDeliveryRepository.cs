@@ -8,9 +8,10 @@ namespace FoodMgtApp.Repositories.Interfaces
 {
     public interface IDeliveryRepository
     {
-        void AddDelivery(string name, string email, string plateNumber);
+        void AddDelivery(Delivery delivery);
         Delivery? GetDeliveryByEmail(string email);
         Delivery? GetAvailableDelivery();
+        int NextDeliveryId();
         List<Delivery> GetAllDeliveries();
     }
 }
