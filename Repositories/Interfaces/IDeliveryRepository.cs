@@ -10,8 +10,8 @@ namespace FoodMgtApp.Repositories.Interfaces
     {
         void AddDelivery(Delivery delivery);
         Delivery? GetDeliveryByEmail(string email);
-        Delivery? GetAvailableDelivery();
-        int NextDeliveryId();
+        bool IsDeliveryGuyAvailable(int deliveryId);
+        List<Delivery> GetAvailableDeliveryGuy();
         List<Delivery> GetAllDeliveries();
     }
 }

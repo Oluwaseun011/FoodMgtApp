@@ -11,7 +11,6 @@ namespace FoodMgtApp.Repositories.Interfaces
         void AddCustomer(Customer customer);
         Customer? GetCustomerById(int id);
         Customer? GetCustomerByEmail(string email);
-        int NextCustomerId();
         List<Customer> GetAllCustomers();
     }
 }
