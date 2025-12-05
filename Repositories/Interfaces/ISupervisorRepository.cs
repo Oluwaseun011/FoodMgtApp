@@ -11,6 +11,7 @@ namespace FoodMgtApp.Repositories.Interfaces
         void Add(Supervisor supervisor);
         bool IsExist(string email);
         Supervisor? GetSupervisor(int id);
-        List<Supervisor> GetAllSupervisors();
+        ICollection<Supervisor> GetSupervisorsInAKitchen(Kitchen kitchen);
+        ICollection<Supervisor> GetAllSupervisors();
     }
 }
