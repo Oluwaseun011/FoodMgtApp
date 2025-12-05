@@ -9,20 +9,18 @@ namespace FoodDeliveryApp.Models.Entities
     {
         public int Id {get;set;}
         public int BranchId {get;set;}
-        public string Name {get;set;} = null!;
-        public int StaffNo {get;set;}
-        public string Email {get;set;} = null!;
-        public string PhoneNumber {get;set;} = null!;
+        public string Name {get;set;} = default!;
+        public string StaffNo {get;set;}= default!;
+        public string Email {get;set;} = default!;
          public bool IsDeleted {get;set;} = false;
         public string CreatedBy {get;set;} = null!;
         public DateTime DateCreated {get;set;} = DateTime.Now;
-        public Supervisor(int branchId,string name,int staffNo,string email,string phoneNumber,string createdBy)
+        public Supervisor(int branchId,string name,string staffNo,string email,string createdBy)
         {
             BranchId = branchId;
             Name = name;
             StaffNo = staffNo;
             Email = email;
-            PhoneNumber = phoneNumber;
             CreatedBy = createdBy;
         }
         

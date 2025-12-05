@@ -11,13 +11,14 @@ namespace FoodDeliveryApp.Models.Entities
         public string Email { get; set; } = default!;
         public string Name { get; set; } = default!;
         public int KitchenId { get; set; }
-        public Kitchen Kitchen { get; set; }
+        public Kitchen Kitchen { get; set; }= default!;
         public string CreatedBy { get; set; } = default!;
         public DateTime DateCreated { get; set; }
         public bool IsDeleted { get; set; }
 
-        public Manager(string email, int kitchenId, string createdBy)
+        public Manager(string name,string email, int kitchenId, string createdBy)
         {
+            Name = name;
             Email = email;
             KitchenId = kitchenId;
             CreatedBy = createdBy;

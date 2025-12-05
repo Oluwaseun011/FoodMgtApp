@@ -8,22 +8,22 @@ namespace FoodDeliveryApp.Models.Entities
     public class Delivery
     {
         public int Id { get; set; }
-        public string Name { get; set; } = null!;
-        public string PhoneNumber { get; set; } = null!;
-        public string Email {get; set; } = null!;
-        public string PlateNumber { get; set; } = null!;
+        public string Name { get; set; } = default!;
+        public string Email {get; set; } = default!;
+        public string PlateNumber { get; set; } = default!;
         public bool IsAvailable { get; set; }
         public string CreatedBy { get; set; } = default!;
-        public DateTime DateCreated { get; set; } = DateTime.Now;
-        public bool IsDeleted { get; set; } = false;
+        public DateTime DateCreated { get; set; }
+        public bool IsDeleted { get; set; } 
 
-        public Delivery(string name,  string phoneNumber, string email, string plateNumber, bool isAvailable)
+        public Delivery(string name,  string email, string plateNumber)
         {
             Name = name;
-            PhoneNumber = phoneNumber;
             Email = email;
             PlateNumber = plateNumber;
-            IsAvailable = isAvailable;
+            IsAvailable = true;
+            IsDeleted = false;
+            DateCreated = DateTime.UtcNow;
         }
     }
 }

@@ -17,8 +17,7 @@ namespace FoodDeliveryApp.Models.Entities
         public User(string email, string password, string roleId)
         {
             Email = email;
-            Password = password;
-            
+            Password = password;    
         }
     }
 }

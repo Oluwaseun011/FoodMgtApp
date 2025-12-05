@@ -8,14 +8,14 @@ namespace FoodDeliveryApp.Models.Entities
     public class Wallet
     {
         public int Id {get; set;}
-        public double Amount {get; set;} = 0;
         public int CustomerId {get; set;}
+        public Customer Customer {get; set;} = default!;
+        public double Amount {get; set;}
 
-        public Wallet(double amount, int customerId)
+        public Wallet(int customerId)
         {
-            Amount = amount;
             CustomerId = customerId;
-
+            Amount = 0;
         }
     }
 }

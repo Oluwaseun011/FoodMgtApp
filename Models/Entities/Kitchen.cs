@@ -10,11 +10,11 @@ namespace FoodDeliveryApp.Models.Entities
         public int Id { get; set; }
         public string Name { get; set; } = default!;
         public string Description { get; set; } = default!;
-        public Manager Manager { get; set; } = default!;
-        public List<Branch> Branch { get; set; } = default!;
         public string CreatedBy { get; set; } = default!;
         public DateTime DateCreated { get; set; } 
         public bool IsDeleted { get; set; }
+        public Manager Manager { get; set; } = default!;
+        public List<Branch> Branches { get; set; } = new List<Branch>();
 
         public Kitchen(string name, string description,  string createdBy)
         {

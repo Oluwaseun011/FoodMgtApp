@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FoodMgtApp.Models.Enums;
 
 namespace FoodDeliveryApp.Models.Entities
 {
@@ -10,9 +11,10 @@ namespace FoodDeliveryApp.Models.Entities
         public int Id {get; set;}
         public string Name {get; set;} = default!;
         public string Email {get; set;} = default!;
-        public string Address {get; set;} = default!;
+        public State Address {get; set;} = default!;
+        public Wallet Wallet {get; set;} = default!;
 
-        public Customer(string name, string email,string address)
+        public Customer(string name, string email,State address)
         {
             Name = name;
             Email = email;

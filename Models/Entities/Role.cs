@@ -12,7 +12,6 @@ namespace FoodDeliveryApp.Models.Entities
         public string Name {get; set;} = default!;
         public List<UserRole> UserRoles {get; set;} = new List<UserRole>();
 
-
         public Role(string name)
         {
             Name = name;
