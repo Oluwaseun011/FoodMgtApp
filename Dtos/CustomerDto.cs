@@ -24,5 +24,5 @@ namespace FoodMgtApp.Dtos
     }
 
     public record CustomerRequest(string Name, string Email, State Address, string Password);
-    public record CustomerResponse(int Id, string Email, Wallet Wallet);
+    public record CustomerResponse(int Id, string Email);
 }
