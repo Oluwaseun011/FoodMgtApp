@@ -7,6 +7,8 @@ namespace FoodDeliveryApp
 {
     public class Queries
     {
+        public const string CategoryTables = "create table if not exist categories(Id int auto_increment,Name varchar(60),primary key(id));";
+        public const string FoodTables = "create table if not exist foods(Id int auto_increment,Name varchar(60)) not null,Discription varchar(100),Price decimal  not null,Quantity int, primary key(id), foreign key(CategoryId) references category(Id)); ";
         public string KitchenTable = "create table if not exist Kitchens (Id int auto_increament, Name varchar (60) unique not null, Description varchar (200), CreatedBy varchar (60), DateCreated datetime, IsDeleted tinyint, primary key(Id))";
         public string ManagerTable = "create table if not exist Managers (Id int auto_increament, Email varchar (100) unique not null, Name varchar (60) not null, KitchenId int, CreatedBy varchar (60), DateCreated datetime, IsDeleted tinyint, primary key(Id), foreign key(KitchenId) references Kitchens (id) )";
         public const string foodmgtapp = "create schema if not exists foodmgtapp";
