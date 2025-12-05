@@ -7,6 +7,8 @@ namespace FoodDeliveryApp
 {
     public class Queries
     {
+        public const string branch = "create table if not exist Branches(int Id not null auto_increment unique,KitchenId int not null, Name varchar(20) not null,CreatedBy varchar(20)not null,State varchar(20) not null,TimeCreated dateTime,IsDeleted tinyint,primary key (Id),foreign key(KitchenId) references Branch(KitchenId)";
+        public const string Supervisor = "create table if not exist Supervisors(Id int not null auto_increment unique,email varchar(25) unique not null,name varchar(30) not null,KitchenId int not null,CreatedBy varchar(20) not null,IsDeleted tinyint not null,DateCreated dateTime not null,primary key(Id),foreign key(KitchenId) references Manager(KitchenId)";
         public const string schema = "create schema if not exists foodmgtapp";
         public const string deliverytables = "create table if not exists Deliveries(Id int auto_increment, Name varchar(50) not null unique, PlateNumber varchar(50) not null unique, IsAvailable tinyint, CreatedBy varchar(50) DateCreated datetime, IsDeleted tinyint, primary key(Id))";
         public const string ordertables = "create table if not exists Orders(Id int auto_increment, RefNumber varchar(50) not null unique, CustomerId int not null, Status int not null, DeliveryId int not null, Products varchar(50), DateCreated datetime, CreatedBy varchar(50), IsDeleted tinyint, Customer int not null, Delivery int not null, primary key(Id), foreign key(CustomerId) references Customers(Id), foreign key(DeliveryId) references Deliveries(Id))";
