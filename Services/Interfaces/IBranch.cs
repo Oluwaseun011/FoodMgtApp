@@ -8,10 +8,10 @@ using FoodMgtApp.Repositories.Interfaces;
 
 namespace FoodMgtApp.Services.Interfaces
 {
-    public interface IBranch
+    public interface IBranchService
     {
 
-        public RegisterBranchResponse Create(RegisterBranchRequest registerBranchRequest);
-        
+        public RegisterBranchResponse? Create(RegisterBranchRequest registerBranchRequest);
+
     }
 }

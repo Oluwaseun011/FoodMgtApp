@@ -9,6 +9,6 @@ namespace FoodMgtApp.Services.Interfaces
 {
     public interface IManagerService
     {
-        public RegisterManagerResponse CreateManager(RegisterManagerRequest registerManagerResponse);
+        public RegisterManagerResponse? CreateManager(RegisterManagerRequest registerManagerResponse);
     }
 }
