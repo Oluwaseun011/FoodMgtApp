@@ -5,9 +5,9 @@ namespace FoodMgtApp.Dtos
     public class CategoryDto
     {
         public int Id { get; set; }
-        public string Name { get; set; } = null!;
-        public List<Food> Foods { get; set; } = null!;
+        public string Name { get; set; } = default!;
+        public List<Food> Foods { get; set; } = default!;
     }
-    public record RegisterCategoryRequest(string Name,List<Food> Foods);
-    public record RegisterCategoryResponse(string Name);
+    public record RegisterCategoryRequest(string Name);
+    public record RegisterCategoryResponse(int Id,string Name);
 }

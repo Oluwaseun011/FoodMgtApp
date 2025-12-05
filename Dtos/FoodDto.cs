@@ -4,8 +4,8 @@ namespace FoodMgtApp.Dtos
     {
          
         public int Id { get; set;}
-        public string Name{get;set;} = null!;
-        public string Description{get;set;} = null!;
+        public string Name{get;set;} = default!;
+        public string Description{get;set;} = default!;
         public decimal Price{get; set;} 
         public int CategoryId{get;set;}
         public int Quantity{get;set;}
@@ -14,5 +14,5 @@ namespace FoodMgtApp.Dtos
     }
     public record RegisterFoodRequest(string Name, string Description,decimal Price,int Quantity);
       
-    public record RegisterFoodResponse(string Name,string description,decimal Price,int Quantity);
+    public record RegisterFoodResponse(int CategoryId,string Name,string description,decimal Price,int Quantity);
 }

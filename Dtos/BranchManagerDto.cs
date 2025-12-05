@@ -14,6 +14,4 @@ namespace FoodMgtApp.Dtos
         public bool IsDeleted { get; set; }
 
     }
-    public record RegisterManagerRequest(string Name,string Email,Kitchen Kitchen);
-    public record RegisterManagerResponse(string Name,Kitchen Kitchen);
 }
