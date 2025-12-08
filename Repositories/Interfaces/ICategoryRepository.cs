@@ -11,7 +11,7 @@ namespace FoodMgtApp.Repositories.Interfaces
         void Add(Category category);
         bool IsExist(string categoryName);
         Category? GetCategory(int id);
-        ICollection<Category> GetKitchenCategories(Kitchen kitchen);
+        ICollection<Category> GetKitchenCategories();
         ICollection<Category> GetAllCategories();
     }
 }
