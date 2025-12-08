@@ -28,6 +28,7 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public ICollection<Category> GetAllCategories()
         {
+            
            ICollection <Category> categories = new List<Category>();
            using (var connection = foodcontext.CreateConnectionString())
             {
