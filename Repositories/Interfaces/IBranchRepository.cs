@@ -10,7 +10,6 @@ namespace FoodMgtApp.Repositories.Interfaces
     public interface IBranchRepository
     {
         void Add(Branch branch);
-        bool IsExist(string branchName);
         Branch? GetBranch(int kitchenId, State state);
         ICollection<Branch> GetKitchenBranch(int kitchenId);
         ICollection<Branch> GetLocationBranches(State state);
