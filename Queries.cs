@@ -7,11 +7,11 @@ namespace FoodDeliveryApp
 {
     public class Queries
     {
-        public const string branch = "create table if not exist Branches(int Id not null auto_increment unique,KitchenId int not null, Name varchar(20) not null,CreatedBy varchar(20)not null,State varchar(20) not null,TimeCreated dateTime,IsDeleted tinyint,primary key (Id),foreign key(KitchenId) references Branch(KitchenId)";
-        public const string Supervisor = "create table if not exist Supervisors(Id int not null auto_increment unique,email varchar(25) unique not null,name varchar(30) not null,KitchenId int not null,CreatedBy varchar(20) not null,IsDeleted tinyint not null,DateCreated dateTime not null,primary key(Id),foreign key(KitchenId) references Manager(KitchenId)";
         public const string schema = "create schema if not exists foodmgtapp";
         public const string kitchens = "create table if not exist kitchens (Id int auto_increament, Name varchar (60) unique not null, Description varchar (200), CreatedBy varchar (60), DateCreated datetime, IsDeleted tinyint, primary key(Id))";
         public const string managers = "create table if not exist Managers (Id int auto_increament, Email varchar (100) unique not null, Name varchar (60) not null, KitchenId int, CreatedBy varchar (60), DateCreated datetime, IsDeleted tinyint, primary key(Id), foreign key(KitchenId) references Kitchens (id) )";  
+        public const string branches = "create table if not exist Branches(int Id not null auto_increment unique,KitchenId int not null, Name varchar(20) not null,CreatedBy varchar(20)not null,State varchar(20) not null,TimeCreated dateTime,IsDeleted tinyint,primary key (Id),foreign key(KitchenId) references Branch(KitchenId)";
+        public const string supervisors = "create table if not exist Supervisors(Id int not null auto_increment unique,email varchar(25) unique not null,name varchar(30) not null,KitchenId int not null,CreatedBy varchar(20) not null,IsDeleted tinyint not null,DateCreated dateTime not null,primary key(Id),foreign key(KitchenId) references Manager(KitchenId)";
         public const string categories = "create table if not exist categories(Id int auto_increment,Name varchar(60),primary key(id));";
         public const string foods = "create table if not exist foods(Id int auto_increment,Name varchar(60)) not null,Discription varchar(100),Price decimal  not null,Quantity int, primary key(id), foreign key(CategoryId) references category(Id)); ";
         public const string deliveries = "create table if not exists Deliveries(Id int auto_increment, Name varchar(50) not null unique, PlateNumber varchar(50) not null unique, IsAvailable tinyint, CreatedBy varchar(50) DateCreated datetime, IsDeleted tinyint, primary key(Id))";
