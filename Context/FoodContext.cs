@@ -11,7 +11,25 @@ namespace FoodDeliveryApp.Context
         public const string ConnectionString = "server=localhost;user=root;password=Pa$$word";
         public const string ConnectionString2 = "server=localhost;user=root;password=Pa$$word;database=FoodMgtApp";
 
-        public MySqlConnection CreateSchema()
+    
+        public void Run()
+        {
+            CreateSchema();
+            CreateTable(Queries.kitchens);
+            CreateTable(Queries.managers);
+            CreateTable(Queries.branches);
+            CreateTable(Queries.supervisors);
+            CreateTable(Queries.categories);
+            CreateTable(Queries.foods);
+            CreateTable(Queries.deliveries);
+            CreateTable(Queries.customers);
+            CreateTable(Queries.wallets);
+            CreateTable(Queries.orders);
+            CreateTable(Queries.users);
+            CreateTable(Queries.roles);
+            CreateTable(Queries.userroles);
+        }
+        public MySqlConnection CreateConnection()
         {
             using(var connection = new MySqlConnection(ConnectionString2))
             {
@@ -19,10 +37,31 @@ namespace FoodDeliveryApp.Context
                 return connection;
             }
         }
-
-        public MySqlConnection CreateConnectionString()
+        private void CreateSchema()
         {
-            using(var con = new mysqlconn)
+            using(var connection = new MySqlConnection(ConnectionString))
+            {
+                connection.Open();
+                var qry = Queries.schema;
+                
+                using(var command = new MySqlCommand(qry, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
         }
+
+        private void CreateTable(string qry)
+        {
+            using(var connection = CreateConnection())
+            {
+                using(var command = new MySqlCommand(qry, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        
     }
 }
