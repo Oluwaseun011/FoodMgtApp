@@ -15,7 +15,7 @@ namespace FoodMgtApp.Repositories.Implementations
         FoodContext foodContext = new FoodContext();
         public void AddCustomer(Customer customer)
         {
-            using(var con = foodContext.CreateConnectionString())
+            using(var con = foodContext.CreateConnection())
             {
                var query = "insert into customers(Name,Email,Address) values (@Name,@Email,@Address)";
                var command = new MySqlCommand(query, con); 
@@ -30,7 +30,7 @@ namespace FoodMgtApp.Repositories.Implementations
         public List<Customer> GetAllCustomers()
         {
             List<Customer> customers = new List<Customer>();
-            using(var con = foodContext.CreateConnectionString())
+            using(var con = foodContext.CreateConnection())
             {
                 var query = "select * from customers";
                 var command = new MySqlCommand(query,con);
@@ -47,7 +47,7 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public Customer? GetCustomerByEmail(string email)
         {
-            using(var con = foodContext.CreateConnectionString())
+            using(var con = foodContext.CreateConnection())
             {
                 var query = "select * from customers where Email = @Email";
                 var command = new MySqlCommand(query, con);
@@ -67,7 +67,7 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public Customer? GetCustomerById(int id)
         {
-            using(var con = foodContext.CreateConnectionString())
+            using(var con = foodContext.CreateConnection())
             {
                 var query = "select * from customers where Id = @Id";
                 var command = new MySqlCommand(query, con);

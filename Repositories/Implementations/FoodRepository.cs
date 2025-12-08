@@ -15,7 +15,7 @@ namespace FoodMgtApp.Repositories.Implementations
         FoodContext foodContext = new FoodContext();
         public void Add(Food food)
         {
-            using (MySqlConnection sqlConnection =  foodContext.CreateConnectionString())
+            using (MySqlConnection sqlConnection =  foodContext.CreateConnection())
             {
                 var query = "insert into foods(Name,Discription,Price,Quantity,CategoryId) values (@Name,@Description,@Price,@Quantity,@CategoryId)";
                 var mySqlCommand = new MySqlCommand(query,sqlConnection);
@@ -31,7 +31,7 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public ICollection<Food> GetAllFood()
         {
-             using(MySqlConnection mySqlConnection = foodContext.CreateConnectionString())
+             using(MySqlConnection mySqlConnection = foodContext.CreateConnection())
             {
                 
                 var query = "select * from foods where Id is @Id";
@@ -55,7 +55,7 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public Food? GetFood(int id)
         {
-            using(MySqlConnection mySqlConnection = foodContext.CreateConnectionString())
+            using(MySqlConnection mySqlConnection = foodContext.CreateConnection())
             {
                 var query = "select * from foods where Id is @Id";
                 var mySqlCommand = new MySqlCommand(query,mySqlConnection);
@@ -78,7 +78,7 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public bool IsExist(string name)
         {
-            using(MySqlConnection mySqlConnection = foodContext.CreateConnectionString())
+            using(MySqlConnection mySqlConnection = foodContext.CreateConnection())
             {
                 var query = "select * from foods where Name is @Name";
                 var mySqlCommand = new MySqlCommand(query,mySqlConnection);

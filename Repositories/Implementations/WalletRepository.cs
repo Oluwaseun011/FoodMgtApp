@@ -14,7 +14,7 @@ namespace FoodMgtApp.Repositories.Implementations
         FoodContext foodContext = new FoodContext();
         public void AddWallet(Wallet wallet)
         {
-            using(var con = foodContext.CreateConnectionString())
+            using(var con = foodContext.CreateConnection())
             {
                 var query = "insert into wallets(CustomerId,Amount) values (@CustomerId,@Amount)";
                 var command = new MySqlCommand(query,con);
@@ -27,7 +27,7 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public Wallet? GetWalletByCustomerId(int customerId)
         {
-            using(var con = foodContext.CreateConnectionString())
+            using(var con = foodContext.CreateConnection())
             {
                 var query = "select * from wallet where CustomerId = @CustomerId";
                 var command = new MySqlCommand(query,con);

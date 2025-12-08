@@ -14,7 +14,7 @@ namespace FoodMgtApp.Repositories.Implementations
         FoodContext foodContext = new FoodContext();
         public void AddDelivery(Delivery delivery)
         {
-            using (var connection = foodContext.CreateConnectionString())
+            using (var connection = foodContext.CreateConnection())
             {
                 string qry = "insert into deliveries(Name, PlateNumber, IsAvailable, CreatedBy, DateCreated, IsDeleted) values (@Name, @PlateNumber, @IsAvailable, @CreatedBy, @DateCreated, @IsDeleted)";
 
@@ -34,7 +34,7 @@ namespace FoodMgtApp.Repositories.Implementations
         {
             List<Delivery> deliveries = new List<Delivery>();
 
-            using (var connection = foodContext.CreateConnectionString())
+            using (var connection = foodContext.CreateConnection())
             {
                 string qry = "select * from deliveries";
 
@@ -57,7 +57,7 @@ namespace FoodMgtApp.Repositories.Implementations
         {
             List<Delivery> deliveries = new List<Delivery>();
 
-            using (var connection = foodContext.CreateConnectionString())
+            using (var connection = foodContext.CreateConnection())
             {
                 string qry = "select * from deliveries where IsAvailable = 0";
 
@@ -78,7 +78,7 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public Delivery? GetDeliveryByEmail(string email)
         {
-            using (var connection = foodContext.CreateConnectionString())
+            using (var connection = foodContext.CreateConnection())
             {
                 string qry = $"select * from deliveries where email = {email}";
 

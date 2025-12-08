@@ -10,7 +10,7 @@ namespace FoodMgtApp.Repositories.Implementations
         FoodContext context = new FoodContext();
         public void Add(FoodDeliveryApp.Models.Entities.Supervisor supervisor)
         {
-          using(var connection = context.CreateConnectionString())
+          using(var connection = context.CreateConnection())
             {
                 var query = "select * from supervisor where supervisor = @supervisor";
                 var command = new MySqlCommand(query,connection);
@@ -18,12 +18,6 @@ namespace FoodMgtApp.Repositories.Implementations
                  var reader = command.ExecuteReader();
                 if(reader.Read())
                 {
-        //               public string Name {get;set;} = default!;
-        // public string Email {get;set;} = default!;
-        // public string StaffNo {get;set;}= default!;
-        //  public bool IsDeleted {get;set;} = false;
-        // public string CreatedBy {get;set;} = null!;
-        // public DateTime DateCreated {get;set;} = DateTime.Now;
                     var supervoisor = new Supervisor(
                         reader.GetInt32(0),
                         reader.GetString(1),

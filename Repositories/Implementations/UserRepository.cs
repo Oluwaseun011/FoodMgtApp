@@ -14,7 +14,7 @@ namespace FoodDeliveryApp.Repositories.Implementations
         FoodContext context = new FoodContext();
         public void AddToDb(User user)
         {
-            using(var connection = context.CreateConnectionString())
+            using(var connection = context.CreateConnection())
             {
                 var query = "insert into users(Email,Password,CreatedBy,IsDeleted,DateCreated) values(@Email,@Password,@CreatedBy,@IsDeleted,@DateCreated)";
                 var command = new MySqlCommand(query, connection);
