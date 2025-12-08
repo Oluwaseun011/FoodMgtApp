@@ -14,7 +14,7 @@ namespace FoodMgtApp.Repositories.Implementations
         FoodContext foodcontext = new FoodContext();
         public void Add(Category category)
         {
-            using (var connection = foodcontext.CreateConnectionString())
+            using (var connection = foodcontext.CreateConnection())
             {
                 var quary = "insert into categories (KitchenId,Name,Food) values (@Name,@KitchenId,@Food)";
                 var command = new MySqlCommand(quary, connection);
@@ -30,7 +30,7 @@ namespace FoodMgtApp.Repositories.Implementations
         {
             
            ICollection <Category> categories = new List<Category>();
-           using (var connection = foodcontext.CreateConnectionString())
+           using (var connection = foodcontext.CreateConnection())
             {
                 string qry = "select * from categories";
                 using(var command = new MySqlCommand(qry, connection))
@@ -48,7 +48,7 @@ namespace FoodMgtApp.Repositories.Implementations
         }
         public Category? GetCategory(int id)
         {
-            using (var connection = foodcontext.CreateConnectionString())
+            using (var connection = foodcontext.CreateConnection())
             {
                 var quary = "select * from categories where Id = @Id";
                 var command = new MySqlCommand(quary, connection);
@@ -69,7 +69,7 @@ namespace FoodMgtApp.Repositories.Implementations
         public ICollection<Category> GetKitchenCategories()
         {
             ICollection <Category> categories = new List <Category>();
-            using (var connection = foodcontext.CreateConnectionString())
+            using (var connection = foodcontext.CreateConnection())
             {
                 var quary = "select * from categories";
                 using(var command = new MySqlCommand(quary, connection))
