@@ -25,5 +25,15 @@ namespace FoodDeliveryApp.Models.Entities
             IsDeleted = false;
             DateCreated = DateTime.UtcNow;
         }
+
+        public Delivery(int id, string name,  string email, string plateNumber,bool isAvailable,bool isDeleted,DateTime dateCreated)
+        {
+            Name = name;
+            Email = email;
+            PlateNumber = plateNumber;
+            IsAvailable = true;
+            IsDeleted = false;
+            DateCreated = DateTime.UtcNow;
+        }
     }
 }
