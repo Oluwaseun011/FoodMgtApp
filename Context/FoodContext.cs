@@ -22,7 +22,7 @@ namespace FoodDeliveryApp.Context
 
         public MySqlConnection CreateConnectionString()
         {
-            using(var con = new mysqlconn)
+            using(var con = new MySqlConnection(""))
         }
     }
 }
