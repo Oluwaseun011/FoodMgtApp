@@ -43,6 +43,7 @@ namespace FoodDeliveryApp.Context
             {
                 connection.Open();
                 var qry = Queries.schema;
+                
                 using(var command = new MySqlCommand(qry, connection))
                 {
                     command.ExecuteNonQuery();
