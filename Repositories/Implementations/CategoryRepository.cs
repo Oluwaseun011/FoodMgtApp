@@ -87,7 +87,22 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public bool IsExist(string categoryName)
         {
-           
+           using(var connection = foodcontext.CreateConnection())
+            {
+                var qry = "select * from categories where CategoryName = @categoryName";
+
+                using(var command = new MySqlCommand(qry, connection))
+                {
+                    command.Parameters.AddWithValue("@categoryName", categoryName);
+
+                    var reader = command.ExecuteReader();
+                    if(reader.Read())
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
     }
 }
