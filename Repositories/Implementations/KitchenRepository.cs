@@ -12,9 +12,10 @@ namespace FoodMgtApp.Repositories.Implementations
 {
     public class KitchenRepository : IKitchenRepository
     {
+        FoodContext foodContext = new FoodContext();
         public void AddToDb(Kitchen kitchen)
         {
-            using (var connection = new MySqlConnection(FoodContext.ConnectionString2))
+            using (var connection = foodContext.CreateConnection())
             {
                 var query = $"insert into kitchens(Name, Description, CreatedBy, DateCreated, IsDeleted, Manager, Branches) values (@Name, @Description, @CreatedBy, @DateCreated, @IsDeleted, @Manager, @Branches)";
                 MySqlCommand command = new MySqlCommand(query, connection);
@@ -32,7 +33,7 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public Kitchen? GetKitchen(string name)
         {
-            using (var connection = new MySqlConnection(FoodContext.CreateConnection))
+            using (var connection = foodContext.CreateConnection())
             {
                 var query = "select * from kitchens where name = @name";
                 using (var command = new MySqlCommand(query, connection))
@@ -51,12 +52,41 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public ICollection<Kitchen> GetKitchens()
         {
-            throw new NotImplementedException();
+            ICollection<Kitchen> kitchens = new List<Kitchen>();
+            using(var connection = foodContext.CreateConnection())
+            {
+                var query = "select * from kitchens";
+                using(var command = new MySqlCommand(query, connection))
+                {
+                    var reader = command.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        var kitchen = new Kitchen(reader.GetString(1), reader.GetString(2), reader.GetString(3));
+                        kitchens.Add(kitchen);
+                    }
+                    return kitchens;
+                }
+            }
         }
 
         public bool IsExist(string name)
         {
-            throw new NotImplementedException();
+            using(var connection = foodContext.CreateConnection())
+            {
+                var query = "select * from customers where Name = @name";
+
+                using(var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@name", name);
+
+                    var reader = command.ExecuteReader();
+                    if(reader.Read())
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
     }
 }

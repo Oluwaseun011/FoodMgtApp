@@ -12,9 +12,10 @@ namespace FoodMgtApp.Repositories.Implementations
     public class ManagerRepository : IManagerRepository
     {
         FoodContext context = new FoodContext();
+
         public void AddToDb(Manager manager)
         {
-            using (var connection = context.CreateConnectionString())
+            using (var connection = context.CreateConnection())
             {
                 var query = $"insert into managers(Name, Email, KitchenId, Kitchen, CreatedBy, DateCreated, IsDeleted) values (@Name, @Email, @KitchenId, @Kitchen, @CreatedBy, @DateCreated, @IsDeleted)";
                 MySqlCommand command = new MySqlCommand(query, connection);
@@ -30,7 +31,7 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public Manager? GetManager(string email)
         {
-            using (var connection = context.CreateConnectionString())
+            using (var connection = context.CreateConnection())
             {
                 var query = "select * from managers where email = @email";
                 using (var command = new MySqlCommand(query, connection))
@@ -49,18 +50,41 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public ICollection<Manager> GetManagers()
         {
-            throw new NotImplementedException();
+            ICollection<Manager> managers = new List<Manager>();
+            using(var connection = context.CreateConnection())
+            {
+                var query = "select * from managers";
+                using(var command = new MySqlCommand(query, connection))
+                {
+                    var reader = command.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        var manager = new Manager(reader.GetString(1),reader.GetString(2),reader.GetInt32(2),reader.GetString(2))
+                        managers.Add(manager);
+                    }
+                    return managers;
+                }
+            }
         }
 
         public bool IsExist(string email)
         {
-            using (var connection = new MySqlConnection(FoodContext.CreateConnection()))
+            using(var connection = context.CreateConnection())
             {
-                var query = "select * from managers where name = @name";
-                using (var command = new MySqlCommand(query, connection))
+                var query = "select * from customers where Email = @email";
+
+                using(var command = new MySqlCommand(query, connection))
                 {
-                    var emailExist = 
-                } 
+                    command.Parameters.AddWithValue("@email", email);
+
+                    var reader = command.ExecuteReader();
+                    if(reader.Read())
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
     }
 }
