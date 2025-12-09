@@ -19,8 +19,9 @@ namespace FoodMgtApp.Dtos
         public List<UserRole> UserRoles {get; set;} = new List<UserRole>();
         public int BranchId {get;set;}
         public string StaffNo {get;set;}= default!;
+        
 
     }
-    public record RegisterBranchRequest(int KitchenId,string Name,State State,string Email,string Password);
+    public record RegisterBranchRequest(int KitchenId,string Name,State State,string Email,string Password,int BranchId,string StaffNo,string CreatedBy);
     public record RegisterBranchResponse(int Id, string Name);
 }
