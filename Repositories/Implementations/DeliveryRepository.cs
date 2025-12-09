@@ -97,7 +97,23 @@ namespace FoodMgtApp.Repositories.Implementations
 
         public bool IsDeliveryGuyAvailable(int deliveryId)
         {
-            throw new NotImplementedException();
+            using (var connection = foodContext.CreateConnection())
+            {
+                string qry = $"select * from deliveries where deliveryid = @deliveryId";
+
+                using (var command = new MySqlCommand(qry,connection))
+                {
+                    command.Parameters.AddWithValue("@deliveryId",deliveryId);
+
+                    var reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
     }
 }
