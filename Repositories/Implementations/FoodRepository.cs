@@ -86,13 +86,6 @@ namespace FoodMgtApp.Repositories.Implementations
                 var reader = mySqlCommand.ExecuteReader();
                 if (reader.Read())
                 {
-                    // Food food = new Food(
-                    //     reader.GetString(0),
-                    //     reader.GetString(1),
-                    //     reader.GetDecimal(2),
-                    //     reader.GetInt32(3),
-                    //     reader.GetInt32(4)
-                    // );
                     return true;
                 }
                 return false;
