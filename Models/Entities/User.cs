@@ -24,5 +24,7 @@ namespace FoodDeliveryApp.Models.Entities
             CreatedBy = createdBy; 
             DateCreated = DateTime.UtcNow;
         }
+
+       
     }
 }

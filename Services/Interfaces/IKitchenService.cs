@@ -7,9 +7,9 @@ using FoodMgtApp.Dtos;
 
 namespace FoodMgtApp.Services.Interfaces
 {
-    public interface KitchenService
+    public interface IKitchenService
     {
-        KitchenResponse RegisterKitchen(KitchenRequest request);
+        KitchenResponse? RegisterKitchen(KitchenRequest request);
         Kitchen? GetKitchen(string id);
         ICollection<Kitchen> GetAllKitchens();
     }
