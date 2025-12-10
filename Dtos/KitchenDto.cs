@@ -27,7 +27,7 @@ namespace FoodMgtApp.Dtos
     }
 
         public record KitchenRequest(string Name, string Email, string Password, string Description);
-        public record KitchenResponse(int Id, string Name, string Email, string Description);
+        public record KitchenResponse(int Id, string Name, string Description);
         
     
 }
