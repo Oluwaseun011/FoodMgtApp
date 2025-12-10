@@ -9,9 +9,10 @@ namespace FoodMgtApp.Repositories.Interfaces
 {
     public interface IBranchRepository
     {
+        bool IsExist(int kitchenId, State state);
         void Add(Branch branch);
         Branch? GetBranch(int kitchenId, State state);
-        ICollection<Branch> GetKitchenBranch(int kitchenId);
-        ICollection<Branch> GetLocationBranches(State state);
+        ICollection<Branch> GetSelected(int kitchenId);
+        ICollection<Branch> GetSelected(State state);
     }
 }

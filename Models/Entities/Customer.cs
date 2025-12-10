@@ -13,15 +13,6 @@ namespace FoodDeliveryApp.Models.Entities
         public string Email {get; set;} = default!;
         public State Address {get; set;} = default!;
         public Wallet Wallet {get; set;} = default!;
-        public ICollection<Order> Orders{get; set;} = new HashSet<Order>();
-
-        public Customer(string name, string email,State address)
-        {
-            Name = name;
-            Email = email;
-            Address = address;
-            
-        }
-        
+        public ICollection<Order> Orders{get; set;} = new HashSet<Order>();       
     }
 }

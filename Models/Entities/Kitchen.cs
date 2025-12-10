@@ -9,19 +9,12 @@ namespace FoodDeliveryApp.Models.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; } = default!;
-        public string Description { get; set; } = default!;
+        public string RefNumber { get; set; } = default!;
+        public string Email { get; set; } = default!;
+        public string PhoneNumber { get; set; } = default!;
         public string CreatedBy { get; set; } = default!;
         public DateTime DateCreated { get; set; } 
         public bool IsDeleted { get; set; }
-        public Manager Manager { get; set; } = default!;
         public ICollection<Branch> Branches { get; set; } = new HashSet<Branch>();
-
-        public Kitchen(string name, string description,  string createdBy)
-        {
-            Name = name;
-            Description = description;
-            CreatedBy = createdBy;
-            DateCreated = DateTime.UtcNow;
-        }
     }
 }

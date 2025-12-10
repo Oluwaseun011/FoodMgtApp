@@ -15,6 +15,7 @@ namespace FoodDeliveryApp.Models.Entities
         public string CreatedBy { get; set; } = default!;
         public DateTime DateCreated { get; set; }
         public bool IsDeleted { get; set; } 
+        public ICollection<Order> Orders = new HashSet<Order>();
 
         public Delivery(string name,  string email, string plateNumber)
         {

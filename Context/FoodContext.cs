@@ -15,23 +15,23 @@ namespace FoodDeliveryApp.Context
         public void Run()
         {
             CreateSchema();
-            CreateTable(Queries.kitchens);
-            CreateTable(Queries.managers);
-            CreateTable(Queries.branches);
-            CreateTable(Queries.supervisors);
-            CreateTable(Queries.categories);
-            CreateTable(Queries.foods);
-            CreateTable(Queries.deliveries);
-            CreateTable(Queries.customers);
-            CreateTable(Queries.wallets);
-            CreateTable(Queries.orders);
-            CreateTable(Queries.users);
-            CreateTable(Queries.roles);
-            CreateTable(Queries.userroles);
+            CreateTable(File.ReadAllText(@"Queries\branchTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\categoryTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\customerTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\deliveryTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\foodTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\kitchenTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\orderFoodTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\orderTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\roleTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\userRoleTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\userTable.sql"));
+            CreateTable(File.ReadAllText(@"Queries\walletTable.sql"));
+            
         }
         public MySqlConnection CreateConnection()
         {
-            using(var connection = new MySqlConnection(ConnectionString2))
+            using(MySqlConnection connection = new(ConnectionString2))
             {
                 connection.Open();
                 return connection;
@@ -43,12 +43,9 @@ namespace FoodDeliveryApp.Context
             using(var connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
-                var qry = Queries.schema;
-                
-                using(var command = new MySqlCommand(qry, connection))
-                {
-                    command.ExecuteNonQuery();
-                }
+                var qry = File.ReadAllText(@"Queries\schema.sql");
+                var command = new MySqlCommand(qry, connection);
+                command.ExecuteNonQuery();
             }
         }
 
@@ -56,10 +53,8 @@ namespace FoodDeliveryApp.Context
         {
             using(var connection = CreateConnection())
             {
-                using(var command = new MySqlCommand(qry, connection))
-                {
-                    command.ExecuteNonQuery();
-                }
+                var command = new MySqlCommand(qry, connection);
+                command.ExecuteNonQuery();
             }
         }
 

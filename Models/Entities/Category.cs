@@ -9,14 +9,8 @@ namespace FoodDeliveryApp.Models.Entities
     {
         public int Id { get; set; }
         public int KitchenId { get; set; }
+        public Kitchen Kitchen{get; set;} = default!;
         public string Name { get; set; } = null!;
-        public ICollection<Food> Foods { get; set; } = new HashSet<Food>();
-
-        public Category(int kitchenId,string name)
-        {
-            KitchenId = kitchenId;
-            Name = name;
-        }
-        
+        public ICollection<Food> Foods { get; set; } = new HashSet<Food>();    
     }
 }

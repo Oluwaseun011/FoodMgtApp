@@ -8,10 +8,9 @@ namespace FoodMgtApp.Repositories.Interfaces
 {
     public interface IKitchenRepository
     {
-        void AddToDb(Kitchen kitchen);
-        ICollection<Kitchen> GetKitchens();
-        Kitchen? GetKitchen(string name);
         bool IsExist(string name);
-        
+        void Add(Kitchen kitchen);
+        Kitchen? Get(string name);
+        ICollection<Kitchen> GetAll();   
     }
 }

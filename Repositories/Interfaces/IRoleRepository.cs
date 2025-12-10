@@ -9,9 +9,9 @@ namespace FoodMgtApp.Repositories.Interfaces
 {
     public interface IRoleRepository
     {
-        void AddToDb(Role role);
-        ICollection<Role> GetRoles();
-        Role? GetRole(int id);
         bool IsExist(string name);
+        void AddToDb(Role role);
+        Role? GetRole(string name);
+        ICollection<Role> GetRoles();
     }
 }

@@ -8,8 +8,8 @@ namespace FoodMgtApp.Repositories.Interfaces
 {
     public interface IFoodRepository
     {
-        void Add(Food food);
         bool IsExist(string name);
+        void Add(Food food);
         Food? GetFood(int id);
         ICollection<Food> GetAllFood();
     }

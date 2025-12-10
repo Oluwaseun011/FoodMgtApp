@@ -8,10 +8,8 @@ namespace FoodDeliveryApp.Repositories.Interfaces
 {
     public interface IUserRepository
     {
-        void AddToDb(User user);
         bool IsExist(string email);
-        ICollection<User> GetUsers();
-        User? GetUser(string email);
-        
+        void AddToDb(User user);
+        User? GetUser(string email);    
     }
 }

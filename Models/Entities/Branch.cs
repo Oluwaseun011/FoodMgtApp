@@ -11,17 +11,13 @@ namespace FoodDeliveryApp.Models.Entities
         public int Id {get;set;}
         public int KitchenId {get;set;}
         public Kitchen Kitchen{get; set;} = default!;
+        public string RefNumber { get; set; } = default!;
+        public string Email { get; set; } = default!;
+        public string PhoneNumber { get; set; } = default!;
         public State State {get;set;}
         public bool IsDeleted {get;set;}
         public string CreatedBy {get;set;} = default!;
         public DateTime DateCreated {get;set;} = DateTime.UtcNow;
-
-       public Branch(int kitchenId,State state,string createdBy)
-        {
-            KitchenId = kitchenId;
-            State = state;
-            CreatedBy = createdBy;
-        }
         
     }
 }

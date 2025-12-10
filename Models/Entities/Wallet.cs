@@ -10,11 +10,6 @@ namespace FoodDeliveryApp.Models.Entities
         public int Id {get; set;}
         public int CustomerId {get; set;}
         public Customer Customer {get; set;} = default!;
-        public double Amount {get; set;} = 0;
-
-        public Wallet(int customerId)
-        {
-            CustomerId = customerId;
-        }
+        public double Amount {get; set;}
     }
 }

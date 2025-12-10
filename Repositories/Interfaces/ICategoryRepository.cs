@@ -8,8 +8,8 @@ namespace FoodMgtApp.Repositories.Interfaces
 {
     public interface ICategoryRepository
     {
+        bool IsExist(int kitchenId, string name);
         void Add(Category category);
-        bool IsExist(string categoryName);
         Category? GetCategory(int id);
         ICollection<Category> GetKitchenCategories();
         ICollection<Category> GetAllCategories();
