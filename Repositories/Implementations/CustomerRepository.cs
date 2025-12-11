@@ -12,77 +12,24 @@ namespace FoodMgtApp.Repositories.Implementations
 {
     public class CustomerRepository : ICustomerRepository
     {
-        FoodContext foodContext = new FoodContext();
         public void AddCustomer(Customer customer)
         {
-            using(var con = foodContext.CreateConnection())
-            {
-               var query = "insert into customers(Name,Email,Address) values (@Name,@Email,@Address)";
-               var command = new MySqlCommand(query, con); 
-               command.Parameters.AddWithValue("@Name", customer.Name);
-               command.Parameters.AddWithValue("@Email",customer.Email);
-               command.Parameters.AddWithValue("@Address",customer.Address);
-
-               command.ExecuteNonQuery();
-            }
+            throw new NotImplementedException();
         }
 
-        public List<Customer> GetAllCustomers()
+        public Customer? Get(int id)
         {
-            List<Customer> customers = new List<Customer>();
-            using(var con = foodContext.CreateConnection())
-            {
-                var query = "select * from customers";
-                var command = new MySqlCommand(query,con);
-
-                var reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    var customer = new Customer(reader.GetString(1), reader.GetString(2),(State)reader.GetInt32(3));
-                    customers.Add(customer);
-                }
-                return customers;
-            }
+            throw new NotImplementedException();
         }
 
-        public Customer? GetCustomerByEmail(string email)
+        public Customer? Get(string email)
         {
-            using(var con = foodContext.CreateConnection())
-            {
-                var query = "select * from customers where Email = @Email";
-                var command = new MySqlCommand(query, con);
-                var reader = command.ExecuteReader();
-                if(reader.Read())
-                {
-                    var customer = new Customer(
-                    reader.GetString(1),
-                    reader.GetString(2),
-                    (State)reader.GetInt32(3)
-                    );
-                    return customer;
-                }
-                return null;
-            }
+            throw new NotImplementedException();
         }
 
-        public Customer? GetCustomerById(int id)
+        public List<Customer> GetAll()
         {
-            using(var con = foodContext.CreateConnection())
-            {
-                var query = "select * from customers where Id = @Id";
-                var command = new MySqlCommand(query, con);
-                var reader = command.ExecuteReader();
-                if(reader.Read())
-                {
-                    var customer = new Customer(
-                        reader.GetString(1),
-                        reader.GetString(2),
-                        (State)reader.GetInt32(3)
-                    );
-                    return customer;
-                }
-                return null;
-            }
+            throw new NotImplementedException();
         }
     }
 }

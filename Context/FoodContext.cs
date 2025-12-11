@@ -2,16 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FoodMgtApp;
 using MySql.Data.MySqlClient;
 
 namespace FoodDeliveryApp.Context
 {
     public class FoodContext
-    {
-        public const string ConnectionString = "server=localhost;user=root;password=Pa$$word";
-        public const string ConnectionString2 = "server=localhost;user=root;password=Pa$$word;database=FoodMgtApp";
-
-    
+    {    
         public void Run()
         {
             CreateSchema();
@@ -31,7 +28,7 @@ namespace FoodDeliveryApp.Context
         }
         public MySqlConnection CreateConnection()
         {
-            using(MySqlConnection connection = new(ConnectionString2))
+            using(MySqlConnection connection = new(AppSettings.ConnectionString2))
             {
                 connection.Open();
                 return connection;
@@ -40,7 +37,7 @@ namespace FoodDeliveryApp.Context
         
         private void CreateSchema()
         {
-            using(var connection = new MySqlConnection(ConnectionString))
+            using(var connection = new MySqlConnection(AppSettings.ConnectionString))
             {
                 connection.Open();
                 var qry = File.ReadAllText(@"Queries\schema.sql");

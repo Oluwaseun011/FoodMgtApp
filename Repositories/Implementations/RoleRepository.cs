@@ -12,88 +12,24 @@ namespace FoodMgtApp.Repositories.Implementations
 {
     public class RoleRepository : IRoleRepository
     {
-        FoodContext context = new FoodContext();
         public void AddToDb(Role role)
         {
-            using(var connection = context.CreateConnection())
-            {
-                var query = "insert into roless(Name,IsDeleted,UserRoles) values(@Name,@IsDeleted,@UserRoles)";
-                var command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Name", role.Name);
-                command.Parameters.AddWithValue("@IsDeleted", role.IsDeleted);
-                command.Parameters.AddWithValue("@UserRoles", role.UserRoles);
-
-                command.ExecuteNonQuery();
-            }
+            throw new NotImplementedException();
         }
 
-        public Role? GetRole(int id)
+        public Role? GetRole(string name)
         {
-            using (var connection = context.CreateConnection())
-            {
-                var qry = "select * from roles where Id = @Id";
-                using (var command = new MySqlCommand(qry, connection))
-                {
-                    command.Parameters.AddWithValue("@Id", id);
-                    var reader = command.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        var user = new Role
-                        {
-                           Name = reader.GetString(0),
-                           IsDeleted = reader.GetBoolean(1)
-                        
-                        };
-                        return user;
-                    }
-                    return null;
-                }
-                
-            }
+            throw new NotImplementedException();
         }
 
         public ICollection<Role> GetRoles()
         {
-             ICollection<Role> roles = new List<Role>();
-            using (var connection = context.CreateConnection())
-            {
-                var qry = "select * from roles";
-                using (var command = new MySqlCommand(qry, connection))
-                {
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        var role = new Role
-                        {
-                            Name = reader.GetString(0),
-                            IsDeleted = reader.GetBoolean(1)
-                        };
-                        roles.Add(role);
-                    }
-                    return roles;
-                }
-            }
+            throw new NotImplementedException();
         }
 
         public bool IsExist(string name)
         {
-            using(var connection = context.CreateConnection())
-            {
-                var qry = "select * from roles where Name = @Name";
-
-                using(var command = new MySqlCommand(qry, connection))
-                {
-                    command.Parameters.AddWithValue("@Name", name);
-
-                    var reader = command.ExecuteReader();
-                    if(reader.Read())
-                    {
-                        return true;
-                    }
-                    return false;
-                }
-            }
+            throw new NotImplementedException();
         }
     }
 }

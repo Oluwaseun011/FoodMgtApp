@@ -13,6 +13,5 @@ namespace FoodMgtApp.Repositories.Interfaces
         void Add(Branch branch);
         Branch? GetBranch(int kitchenId, State state);
         ICollection<Branch> GetSelected(int kitchenId);
-        ICollection<Branch> GetSelected(State state);
     }
 }

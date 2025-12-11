@@ -1,28 +1,20 @@
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using FoodDeliveryApp.Context;
 using FoodDeliveryApp.Models.Entities;
 using FoodDeliveryApp.Repositories.Interfaces;
-using MySql.Data.MySqlClient;
 
 namespace FoodDeliveryApp.Repositories.Implementations
 {
-    public class UserRepository : IUserRepository
+    public class BranchFoodRepository : IBranchFoodRepository
     {
-        public void AddToDb(User user)
+        public void Add(BranchFood branchFood)
         {
             throw new NotImplementedException();
         }
 
-        public User? GetUser(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsExist(string email)
+        public ICollection<BranchFood> Get(int foodId)
         {
             throw new NotImplementedException();
         }
