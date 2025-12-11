@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using FoodDeliveryApp.Constants;
 using FoodDeliveryApp.Dtos;
 using FoodDeliveryApp.Models.Entities;
+using FoodDeliveryApp.Models.Enums;
 using FoodDeliveryApp.Services.Implementations;
 using FoodDeliveryApp.Services.Interfaces;
 using FoodMgtApp.Dtos;
@@ -12,20 +16,20 @@ using FoodMgtApp.Services.Interfaces;
 
 namespace FoodDeliveryApp.Menu
 {
-    public partial class MainMenu 
+    public partial class MainMenu
     {
         IUserService userService = new UserService();
-        IKitchenService kitchenService = new KitchenService();
+
         public void Start()
         {
             Console.Write("1. Register\n2. Login\n3. Exit");
             string opt = Console.ReadLine()!;
-            if(opt == "1")
+            if (opt == "1")
             {
                 RegisterMenu();
                 Start();
             }
-            else if(opt == "2")
+            else if (opt == "2")
             {
                 LoginMenu();
             }
@@ -41,17 +45,25 @@ namespace FoodDeliveryApp.Menu
             Console.Write("Name: ");
             string name = Console.ReadLine();
             Console.Write("Email: ");
-            string email = Console.ReadLine();
+            string email = ReadEmail();
             Console.Write("Password: ");
-            string password = Console.ReadLine();
+            var password = ReadPassword();
             Console.Write("Description: ");
             string description = Console.ReadLine();
             Console.Write("Select State: 1. Lagos\n2. Ogun\n.3. Oyo");
             State state = (State)int.Parse(Console.ReadLine());
+
+            Console.Write("Date Of Birth(dd/mm/yyyy): ");
+            DateTime dateOfBirth = ReadDate();
+
+            Console.WriteLine("Select gender: ");
+            Console.WriteLine("  Enter 1 for male\n  Enter 2 for female: ");
+            Gender gender = ReadGender();
             
+
             KitchenRequest kitchenRequest = new KitchenRequest(name, email, password, description);
             var response = kitchenService.RegisterKitchen(kitchenRequest);
-            if(response is null)
+            if (response is null)
             {
                 Console.WriteLine("Registration failed");
             }
@@ -76,7 +88,17 @@ namespace FoodDeliveryApp.Menu
             }
             else
             {
-                
+                if(response.Roles.Any(a => a.Name == Roles.CEO))
+                {
+                }
+                else if(response.Roles.Any(a => a.Name == Roles.Customer))
+                {
+                }
+                else
+                {
+                    Console.WriteLine("you have no role");
+                }
+
             }
         }
     }
