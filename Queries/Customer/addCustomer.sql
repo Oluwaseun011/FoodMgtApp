@@ -1,0 +1,1 @@
+insert into customers(Name, Email, Address) values(@Name, @Email, @Address);

@@ -11,14 +11,41 @@ namespace FoodMgtApp.Repositories.Implementations
 {
     public class WalletRepository : IWalletRepository
     {
+        FoodContext foodContext = new FoodContext();
         public void AddWallet(Wallet wallet)
         {
-            throw new NotImplementedException();
+            using (var connection = foodContext.CreateConnection())
+            {
+                var qry = @"Queries\Wallet\addWallet.sql";
+                var command = new MySqlCommand(qry, connection);
+                command.Parameters.AddWithValue(@"CustomerId", wallet.CustomerId);
+                command.Parameters.AddWithValue(@"Amount", wallet.Amount);
+                command.ExecuteNonQuery();
+
+            }
         }
 
         public Wallet? GetWalletByCustomerId(int customerId)
         {
-            throw new NotImplementedException();
+           using (var connection = foodContext.CreateConnection())
+            {
+                var qry = @"Queries\Wallet\getWalletById.sql";
+                var command = new MySqlCommand(qry, connection);
+                command.Parameters.AddWithValue(@"CustomerId", customerId);
+               var reader = command.ExecuteReader();
+
+
+                if (reader.Read())
+                {
+                    return new Wallet
+                    {
+                        Id = reader.GetInt32(0),
+                        CustomerId = reader.GetInt32(1),
+                        Amount = reader.GetDouble(2)
+                    };
+                }
+            }  
+            return null;
         }
     }
 }

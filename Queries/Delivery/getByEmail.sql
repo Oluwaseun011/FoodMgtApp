@@ -1,0 +1,1 @@
+select * from deliveries where Email = @Email;

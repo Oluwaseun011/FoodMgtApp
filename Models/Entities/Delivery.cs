@@ -17,24 +17,5 @@ namespace FoodDeliveryApp.Models.Entities
         public bool IsDeleted { get; set; } 
         public ICollection<Order> Orders = new HashSet<Order>();
 
-        public Delivery(string name,  string email, string plateNumber)
-        {
-            Name = name;
-            Email = email;
-            PlateNumber = plateNumber;
-            IsAvailable = true;
-            IsDeleted = false;
-            DateCreated = DateTime.UtcNow;
-        }
-
-        public Delivery(int id, string name,  string email, string plateNumber,bool isAvailable,bool isDeleted,DateTime dateCreated)
-        {
-            Name = name;
-            Email = email;
-            PlateNumber = plateNumber;
-            IsAvailable = true;
-            IsDeleted = false;
-            DateCreated = DateTime.UtcNow;
-        }
     }
 }
