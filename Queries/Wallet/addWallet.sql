@@ -1,0 +1,1 @@
+insert into wallets(CustomerId, Amount) values(@CustomerId, @Amount);
