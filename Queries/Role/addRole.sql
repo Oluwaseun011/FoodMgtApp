@@ -1,0 +1,1 @@
+insert into roles(Name) value (@Name);

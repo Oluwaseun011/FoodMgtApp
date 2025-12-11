@@ -1,0 +1,1 @@
+select * from wallets where CustomerId = @customerId;

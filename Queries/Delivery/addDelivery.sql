@@ -1,0 +1,1 @@
+insert into deliveries(Name,Email,PlateNumber,IsAvailable,CreatedBy,DateCreated,IsDeleted) values (@Name,@Email,@PlateNumber,@IsAvailable,@CreatedBy,@DateCreated,@IsDeleted);
