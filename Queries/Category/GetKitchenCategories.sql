@@ -1,0 +1,1 @@
+select * from categories where KitchenId = @"KitchenId";

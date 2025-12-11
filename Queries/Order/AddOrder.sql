@@ -1,0 +1,1 @@
+insert into table orders (RefNumber, CustomerId, Status, DeliveryId) values (@"RefNumber", @"CustomerId", @"Status", @"DeliveryId");
