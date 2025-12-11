@@ -1,0 +1,1 @@
+select * from kitchens where Name = @name;
