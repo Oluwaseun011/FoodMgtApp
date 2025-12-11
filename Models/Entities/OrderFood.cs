@@ -12,5 +12,7 @@ namespace FoodDeliveryApp.Models.Entities
         public Order Order{get; set;} = default!;
         public int FoodId{get; set;}
         public Food Food{get; set;} = default!;
+        public int Quantity{get; set;}
+
     }
 }

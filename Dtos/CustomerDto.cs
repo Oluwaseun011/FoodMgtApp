@@ -10,19 +10,24 @@ namespace FoodMgtApp.Dtos
 {
     public class CustomerDto
     {
+        public int UserId {get; set;}
+        public string Email {get; set;} = default!;
+        public string Password {get; set;} = default!;
+        public ICollection<UserRole> UserRoles {get; set;} = new HashSet<UserRole>(); 
+
         public int Id {get; set;}
+        public string Name {get; set;} = default!;
+        public State Address {get; set;} = default!;
+        public Wallet Wallet {get; set;} = default!;
+        public ICollection<Order> Orders{get; set;} = new HashSet<Order>();  
+
+        public int WalletId {get; set;}
         public int CustomerId {get; set;}
         public Customer Customer {get; set;} = default!;
         public double Amount {get; set;}
-        public string Name {get; set;} = default!;
-        public string Email {get; set;} = default!;
-        public State Address {get; set;} = default!;
-        public Wallet Wallet {get; set;} = default!;
-        public string Password {get; set;} = default!;
-        public List<UserRole> UserRoles {get; set;} = new List<UserRole>();
         
     }
 
-    public record CustomerRequest(string Name, string Email, State Address, string Password);
-    public record CustomerResponse(int Id, string Email);
+    public record RegisterCustomerRequestModel(string Email, string Password, string Name, State Address);
+    public record RegisterCustomerResponseModel(string Name);
 }

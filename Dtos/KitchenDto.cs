@@ -9,25 +9,24 @@ namespace FoodMgtApp.Dtos
 {
     public class KitchenDto
     {
+        public int UserId {get; set;}
+        public string Email {get; set;} = default!;
+        public string Password {get; set;} = default!;
+        public ICollection<UserRole> UserRoles {get; set;} = new HashSet<UserRole>();  
+
         public int Id { get; set; }
         public string Name { get; set; } = default!;
-        public string Description { get; set; } = default!;
+        public string RefNumber { get; set; } = default!;
+        public string PhoneNumber { get; set; } = default!;
         public string CreatedBy { get; set; } = default!;
         public DateTime DateCreated { get; set; } 
         public bool IsDeleted { get; set; }
-        public Manager Manager { get; set; } = default!;
-        public List<Branch> Branches { get; set; } = new List<Branch>();
-        public string Email { get; set; } = default!;
-        public int KitchenId { get; set; }
-        public Kitchen Kitchen { get; set; }= default!;
-        public string Password {get; set;} = default!;
-        public List<UserRole> UserRoles {get; set;} = new List<UserRole>();
-    
+        public ICollection<Branch> Branches { get; set; } = new HashSet<Branch>();
 
     }
 
-        public record KitchenRequest(string Name, string Email, string Password, string Description);
-        public record KitchenResponse(int Id, string Name, string Description);
+        public record RegisterKitchenRequestModel(string Email, string Password,string Name, string PhoneNumber);
+        public record RegisterKitchenResponseModel(string Name);
         
     
 }
