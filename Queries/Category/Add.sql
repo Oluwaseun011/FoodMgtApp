@@ -1,0 +1,1 @@
+insert into categories(KitchenId, Name) values (@"KitchenId", @"Name");

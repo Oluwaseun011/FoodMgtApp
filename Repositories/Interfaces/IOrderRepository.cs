@@ -10,7 +10,7 @@ namespace FoodMgtApp.Repositories.Interfaces
     {
         void AddOrder(Order order);
         Order? GetOrderById(int id);
-        List<Order> GetOrdersByCustomerId(int customerId);
-        List<Order> GetAllOrders();
+        ICollection<Order> GetOrdersByCustomerId(int customerId);
+        ICollection<Order> GetAllOrders();
     }
 }

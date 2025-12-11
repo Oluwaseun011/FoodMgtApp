@@ -1,0 +1,1 @@
+insert into tables orders (OrderId, FoodId) values (@"OrderId", @"foodId");

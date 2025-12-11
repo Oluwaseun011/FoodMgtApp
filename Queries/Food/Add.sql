@@ -1,0 +1,1 @@
+insert into table foods(Name, CategoryId) values (@"Name", @"CategoryId");
