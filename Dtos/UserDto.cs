@@ -19,6 +19,6 @@ namespace FoodDeliveryApp.Dtos
     }
 
     public record LoginRequestModel(string Email, string Password);
-    public record LoginResponseModel(int Id, string Email, ICollection<Role> Roles);
+    public record LoginResponseModel(string Email, ICollection<Role> Roles);
 
 }

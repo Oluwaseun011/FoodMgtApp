@@ -44,8 +44,10 @@ namespace FoodDeliveryApp.Menu
         {
             Console.Write("Name: ");
             string name = Console.ReadLine();
+
             Console.Write("Email: ");
             string email = ReadEmail();
+            
             Console.Write("Password: ");
             var password = ReadPassword();
             Console.Write("Description: ");
