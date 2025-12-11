@@ -1,0 +1,1 @@
+insert into userroles(UserId,RoleId) values (@UserId,@RoleId);

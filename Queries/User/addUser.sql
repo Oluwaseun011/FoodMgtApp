@@ -1,0 +1,1 @@
+insert into users (Email, Password, CreatedBy) values (@Email, @Password, @CreatedBy);
